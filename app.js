@@ -4,7 +4,7 @@
 // Main page meets requirements of the problem domain
 // Use template literals in your JS logic to render the stores as lists on the sales page
 var title = document.getElementById('cookie_title');
-title.innerHTML= 'Cookie Sale';
+title.innerHTML= `Pat's Amazing Salmon Cookies`;
 
 function getRandomIntInclusive(min, max) { //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
   min = Math.ceil(min);
@@ -12,92 +12,49 @@ function getRandomIntInclusive(min, max) { //https://developer.mozilla.org/en-US
   return Math.floor(Math.random() * (max - min + 1)) + min; 
 };
 
-var first_cookie_location = {
-  name: 'first and pike',
-  min_customers: 23,
-  max_customers: 65,
-  avg_cookie_sales: 6.3,
-  hourly_cookie_sales: []
-
+function Location (name, starting_hours, min_customers, max_customers, avg_cookie_sales, hourly_cookie_sales, element_id) {
+  this.name = name;
+  this.starting_hours = starting_hours;
+  this.min_customers = min_customers;
+  this.max_customers = max_customers;
+  this.hours_in_workday = 14;
+  this.avg_cookie_sales = avg_cookie_sales;
+  this.hourly_cookie_sales = hourly_cookie_sales;
+  this.element_id = element_id;
 };
 
-first_cookie_location.render_pike_to_page = function() {
-  var first_ul = document.getElementById('loc_pike');
-  var first_li = document.createElement('li');
-  first_li.textContent = 'Hourly Cookie Sales';
-  first_ul.appendChild(first_li);
-  for (var i = 0; i < this.hourly_cookie_sales.length; i++) {
-    var new_li = document.createElement('li');    //change new_li variable
-    var cookie_sales = this.hourly_cookie_sales[i];
-    new_li.textContent = `Time ${i + 1} Cookies Sold: ${cookie_sales}`;
-    first_ul.appendChild(new_li);
-  }
-};
+//random hourly cookie generator
 
-first_cookie_location.cookies_sold_hourly = function (){
-  for(var i = 0; i < 14; i++){
+Location.prototype.random_cookie_number = function (){
+  for(var i = 0; i < this.hours_in_workday; i++){
     var random_customer = getRandomIntInclusive(this.min_customers, this.max_customers);
-    var random_cookie = random_customer * this.avg_cookie_sales;
-    this.hourly_cookie_sales.push(random_cookie);
+    var random_cookie_number = random_customer * this.avg_cookie_sales;
+    var hourly_rounded_sales = Math.floor(random_cookie_number)
+    this.hourly_cookie_sales.push(hourly_rounded_sales);
   }
 };
 
-first_cookie_location.cookies_sold_hourly();
-first_cookie_location.render_pike_to_page();
+//render to page constructor function
 
-var second_cookie_location = {
-  name: 'sea tac airport',
-  min_customers: 3,
-  max_customers: 24,
-  avg_cookie_sales: 1.2,
-  hourly_cookie_sales: []
-};
-second_cookie_location.render_seatac_to_page = function() {
-  var second_ul = document.getElementById('loc_seatac');
-  var second_li = document.createElement('li');
-  second_li.textContent = 'Hourly Cookie Sales';
-  second_ul.appendChild(second_li);
+Location.prototype.render = function(){
+  this.random_cookie_number();
+  var table_parent = document.getElementById(this.element_id);
   for (var i = 0; i < this.hourly_cookie_sales.length; i++) {
-    var new_li = document.createElement('li');    //change new_li variable
+    var new_data = document.createElement('td'); 
     var cookie_sales = this.hourly_cookie_sales[i];
-    new_li.textContent = `Time ${i + 1} Cookies Sold: ${cookie_sales}`;
-    second_ul.appendChild(new_li);
+    new_data.textContent = cookie_sales;
+    table_parent.appendChild(new_data);
   }
 };
 
-second_cookie_location.cookies_sold_hourly = function (){
-  for(var i = 0; i < 14; i++){
-    var random_customer = getRandomIntInclusive(this.min_customers, this.max_customers);
-    var random_cookie = random_customer * this.avg_cookie_sales;
-    this.hourly_cookie_sales.push(random_cookie);
-  }
-};
+var first_cookie_location = new Location('First and Pike', 6, 23, 65, 6.3, [], 'pike');
+var second_cookie_location = new Location('Sea Tac Airport', 6, 3, 24, 1.2, [], 'seatac');
+var third_cookie_location = new Location('Seattle Central', 6, 11, 38, 3.7, [], 'seattle');
+var fourth_cookie_location = new Location('Capitol Hill', 6, 20, 38, 2.3, [], 'chill');
+var fifth_cookie_location = new Location('Alki', 6, 2, 16, 4.6, [], 'alkis');
 
-second_cookie_location.cookies_sold_hourly();
-second_cookie_location.render_seatac_to_page();
-
-var third_cookie_location = {
-  name: 'seattle center',
-  min_customers: 11,
-  max_customers: 38,
-  avg_cookie_sales: 3.7,
-  hourly_cookie_sales: []
-};
-
-var fourth_cookie_location = {
-  name: 'capitol hill',
-  min_customers: 20,
-  max_customers: 38,
-  avg_cookie_sales: 2.3,
-  hourly_cookie_sales: []
-};
-
-var fifth_cookie_location = {
-  name: 'alki',
-  min_customers: 2,
-  max_customers: 16,
-  avg_cookie_sales: 4.6,
-  hourly_cookie_sales: []
-};
-
-
+first_cookie_location.render();
+second_cookie_location.render();
+third_cookie_location.render();
+fourth_cookie_location.render();
+fifth_cookie_location.render();
