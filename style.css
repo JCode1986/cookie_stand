@@ -1,6 +1,29 @@
+body {
+  background: darkcyan;
+}
+#cookie_table {
+  border: 1px solid black;
+  text-align: center;
+  padding: 6px;
+  background-color: rgb(9, 0, 128);
+}
+#cookie_table th {
+  padding: 15px;
+  border: 1px solid black;
+}
+#cookie_table tr {
+  background: aquamarine;
+  border-bottom: 1px;
+  border-color: black;
+  border: 1px;
+}
 #cookie_title {
   text-align: center;
-};
-li * {
-  display: inline
-};
+  font-family: cursive;
+  background: url("salmon.png") no-repeat;
+  height: 250px;
+  background-position: center;
+  padding: 3px;
+  color: lavenderblush;
+  font-size: 77px;
+}
