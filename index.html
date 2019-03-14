@@ -9,9 +9,29 @@
 </head>
 <body>
   <h1 id="cookie_title">Magical Cookie Sale!</h1>
+  <form id="cookie_store">
+      <fieldset>
+        <legend>New Cookie Store</legend>
   
-<table id="cookie_table">
-  <tr id ="hours">
+        <label for="store_name">Store Name:
+          <input name="store_name" type="text">
+        </label>
+  
+        <label for="min_customers"> Minimum Customers:</label>
+          <input type="text" name="min_customers">
+  
+        <label for="max_customers"> Maximum Customers:</label>
+        <input type="text" name="max_customers">
+  
+        <label for="avg_customers">Average Customers:</label>
+        <input type="text" name="avg_customers">
+  
+        <button id = "button" type="submit">All Done</button>
+      </fieldset>
+    </form>
+  
+  <table id="cookie_table">
+    <tr id ="hours">
     <th></th>
     <th>6:00am</th>
     <th>7:00am</th>
@@ -47,7 +67,7 @@
   <tr id="totals">  
     <th scope="row">Totals</th>
   </tr>
-  </table>
+  <table id="stores"></table>
   <script src="app.js"></script>
 </body>
 </html>
