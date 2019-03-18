@@ -1,10 +1,6 @@
-* {
-  box-sizing: border-box;
-}
 body {
   background: #83f1f1;
-  width: 960 px;
-  margin: 0 auto;
+  text-align: center;
 }
 li {
   display: inline;
@@ -14,33 +10,21 @@ li {
 #cookie_table {
   border: 21px solid #450808;
   text-align: center;
-  padding: 15px;
-  background-color: rgb(0, 104, 128);
-  border-collapse: collapse;
-  margin: auto;
-  padding-bottom: 37px;
-}
-#cookie_table th {
-  padding: 15px;
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-#cookie_table tr {
-  background: aquamarine;
-  border-bottom: 1px;
-  border-color: black;
-  border: 1px;
-  border-collapse: collapse;
+  background-color: #450808;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
 }
 #cookie_title {
   text-align: center;
   font-family: cursive;
-  background: url("salmon.png") no-repeat; /*www.w3schools.com*/
+  background: url("salmon.png") no-repeat;
   height: 250px;
   background-position: center;
   padding: 3px;
   color: lavenderblush;
-  text-shadow: 5px 5px black;
+  text-shadow: 2px 2px black;
+  font-size: 75px;
 }
 #cookie_store {
   margin: auto;
@@ -59,10 +43,9 @@ legend {
 #button {
   margin-left: 50%;
   transform: translate(-50%, 0);
+  margin-left: auto;
+  margin-right: auto;
   }
-#cookie_table td {
-  border: 1px solid black;
-}
 ul {
   text-align: center;
   margin-top: 78px;
@@ -70,3 +53,51 @@ ul {
 p {
   text-align: center;
 }
+td, th {  
+  border: 1px solid transparent;
+  height: 30px; 
+  transition: all 0.3s;
+}
+
+th {  
+  background: #DFDFDF;
+  font-weight: bold;
+}
+
+td {  
+  background: #FAFAFA;
+  text-align: center;
+}        
+tr:nth-child(even) td { 
+  background: #F1F1F1; 
+}   
+ tr:nth-child(odd) td { 
+   background: #FEFEFE; 
+}  
+tr td:hover { 
+  background: #666; 
+  color: #FFF; 
+}
+.column {
+  float: left;
+  width: 25%;
+  padding: 15px;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+  padding-left: 222px;
+}
+#fishy {
+  width: 90%;
+  box-shadow: 8px 8px black;
+}
+#frosted {
+  width: 126%;
+  box-shadow: 8px 8px black;
+}
+#cutter_fish {
+  box-shadow: 8px 8px black;
+}
+
